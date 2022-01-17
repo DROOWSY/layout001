@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>유튜브포함 레이아웃</title>
+    <style>
+        @font-face {
+        font-family: 'Cafe24SsurroundAir';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24SsurroundAir.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+}
+        @font-face {
+        font-family: 'Cafe24Ssurround';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+}
+        @font-face {
+         font-family: 'HSYuji-Regular';
+         src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/HSYuji-Regular.woff') format('woff');
+         font-weight: normal;
+         font-style: normal; /* 눈누 폰트. 폰트가 바뀌길 원하는 스타일부분에
+                                font-family를 붙여넣는다. */
+        }
+        *{margin: 0; padding: 0;}
+        li {list-style: none;
+        } /* 블릿없애기 */
+        a {
+            text-decoration: none;
+            color : #333;
+            display: block;
+        }
+        html, body {
+            font-family: 'Cafe24SsurroundAir';
+            color: #333;
+        }
+        /* 이미지가 왼쪽에 있는 레이아웃 */
+        .left {
+            width: 1600px;
+            margin: 100px auto;
+        }
+        .left .top {
+            display: flex; 
+        /* ▲ figure와 div가 가로로 나열된다  */
+            height: 500px;
+            align-items: center;
+        /* ▲ 가로로 나열되어 있는 요소들을 수직 정렬 시켜주는것 : 가운데 정렬 */
+            margin-bottom: 50px;
+        }
+        .left .top figure {
+            width: 60%;
+            height: 100%
+        }
+        .left .top figure img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .left .top div {
+            width: 40%;
+            padding: 0 60px;
+            /* 가로값이 측정되어있는 상태에서 padding(내부여백)을 적용시키면
+               가로값+패딩값 => 이 된다.
+               패딩값을 포함해서 가로값을 설정할 수 있는게
+               box-sizing:border-box */
+            box-sizing: border-box;
+            /* ▲ 패딩이 있으나 없으나 똑같다. */
+        }
+        /* 오른쪽에 있는 텍스트 div */
+        .left .top div h4 {
+        /* 글자크기 25px  */
+        font-size: 25px;
+        font-family: 'Cafe24Ssurround';
+        }
+        .left .top div p {
+        /* 글자크기 16px 글자컬러 #7D7D7D */
+        font-size: 16px;
+        color: #7D7D7D;
+        margin: 10px 0;
+        }
+        .left .top div dl {
+        /* dt와 dd 가로정렬 flex 사용 */
+        display: flex;
+        }
+        .left .top div dl dt {
+        /* 가로값 120px 글자두께 두껍게*/
+        width: 120px;
+        font-weight: bold;
+        margin-top: 5px;
+        }
+        .left .top div .info{
+        /* 글자크기 18px 윗쪽과의 간격 30px 아랫쪽과의 간격 40px*/
+        font-size: 18px;
+        margin-top: 30px;
+        margin-bottom: 40px; 
+        }
+        .left .top div ul {
+            display:flex;
+        }
+        .left .top div ul li {
+        background-color: #fff(255, 235, 230);
+        width : 130px;
+        height: 45px;
+        border: 1px solid rgb(56, 50, 50) ;
+        text-align: center;
+        line-height: 45px;
+        margin-right: 23px;
+    
+        }    
+        
+        .left .top div ul li:first-child {
+            background-color: rgb(221, 221, 221);
+            /* border: 0;   <= 테두리 없애기 */
+            border: 0;
+        }
+
+        .left .top div ul li:hover {
+         box-shadow: 5px 5px 10px rgba(204, 204, 204, 0.589);
+        }
+
+        /* 유튜브 스타일 적용*/
+        .bottom div{
+            width: 100%;
+            padding-bottom: 56.25%;
+            position: relative;
+        }
+        .bottom div iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* ★ 그래픽 디자인 ★ */
+        .g_design {
+            text-align: center;
+            background: url('images/cont_bg.jpg') center center / cover no-repeat;
+            padding: 100px 0;
+            background-attachment: fixed;   /* 이미지 고정  */
+        }
+        .g_design h3 {
+            font-size: 50px;
+            font-family: 'Cafe24Ssurround';
+        }
+        .g_design ul {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px; 
+        }
+        .g_design ul li {
+            margin: 0 17px;
+        }
+        .g_design div {
+            width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap; /* 사진이 부모영역보다 크면 사진이 아래로 떨어지게 한다. */
+            justify-content: space-between;
+        }
+        .g_design div figure {
+            width: 32%;
+            height: 335px;
+            margin: 20px 0px;
+        }
+        .g_design div figure img{
+            width:100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        /* footer */
+        footer {
+            background-color: #333;
+            padding: 50px 0;
+        }
+        footer dl {
+            width: 300px;
+            display: flex;
+            justify-content: center;
+            margin: 7px auto;
+        }
+        footer dl dt {
+            color: #fff;
+            width: 150px;
+        }
+        footer dl dd {
+            color: #fff;
+        }
+        footer dl dd a {
+            color: #fff;
+        }
+        footer p {
+            color: #fff;
+            text-align: center;
+        }
+        footer p a {
+            color: #fff;
+        }
+        footer .copy {
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 40px; 
+        }
+
+
+            /* 
+            ★☆ 반응형 media screen ☆★ 
+            ▲ pc 노트북 태블릿 모바일 티비 등에 대한  화면크기를 조절 가능
+              기본적인 해상도 크기는 1920 px
+              태블릿으로 넘어가는 크기 1024 px
+              모바일 가로버전 + 작은 태블릿 크기 767 px 
+              모바일 크기 480 ~ 320 px*/
+
+              /* 컨테이너 중심축 가로크기 100% (가로 스크롤바 없애기) */
+              @media screen and (max-width:1600px) { /* <- ; 안붙임  */
+                  .left{
+                      width: 100%;
+                  }
+                  .g_design div {
+                      width: 95%;  /* ◀사진에 좌우여백 주기위해서 */
+                  }
+              } /* 1600px  */
+
+
+              /* 해상도 크기 1024px 이하일 때 부터 */
+              @media screen and (max-width: 1024px) {
+                .left:nth-child(2) .top div {
+                    order : 1; /* 두번째섹션이 플렉스때문에 글->그림->영상이었는데
+                                  그림->글->영상이 되도록 */
+                /*  ▲ flex 자식 요소의 순번을 바꾼다 */
+                }
+                .left .top {flex-wrap : wrap; /* ▶ 플렉스를 시켜놔서 글자가 자꾸 아래로
+                                                    떨어지기때문에 wrap 적용시켜줘야된다. */
+                            height: auto;}    /* ▶ 크기를 500px로 잡아놨기때문에 글자가
+                                                    사진에 묻힌다. 그래서 auto로 해야됨.  */
+                .left .top figure {width: 95%;
+                                   margin: 0 auto;}
+                .left .top div {width:100%;
+                                padding: 0 20px;}
+              }/* 1024 */
+
+              /* 767px 이하일 때 부터, 섹션3 */
+              @media screen and (max-width:767px) {
+                  /* figure의 선택자를 찾아서 가로값 49%로 */
+                  .g_design div figure {width: 49%;}
+              } /* 767 */
+
+              @media screen and (max-width:414px) {
+                .g_design div figure {
+                    width: 100%;
+                    margin: 10px 0;
+                }
+              }/* 414 */
+    </style>
+</head>
+<body>
+    <section class="left">
+        <div class="top">
+            <figure>
+                <img src="images/bg01.jpg" alt="노트북 향수병" />
+            </figure>
+            <div>
+                <h4>2020 카트라이더 리그 시즌1 카트 시네마틱</h4>
+                <p class="txt">편집, 특수효과</p>
+                <dl>
+                    <dt>프로그램</dt>
+                    <dd>After effects, Premiere pro, illustrator </dd>
+                </dl>
+                <dl>
+                    <dt>러닝타임</dt>
+                    <dd>1m 00s</dd>
+                </dl>
+                <dl>
+                    <dt>원본소스</dt>
+                    <dd>.</dd>
+                </dl>
+                <p class="info">제작 목적 및 콘셉트 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem assumenda animi, aut consequuntur nisi rem, minus deserunt similique esse officia quisquam ad. Nemo adipisci odit eaque a eius neque voluptate!</p>
+                <ul>
+                    <li><a href="#">영상보기</a></li>
+                    <li><a href="#">기획서보기</a></li>
+                </ul>
+            </div>
+            
+        </div> <!-- .top end -->
+        <div class="bottom">
+            <div>
+                <!-- 유튜브연결 -->
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/OYqhyOTO2_8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+
+        </div> <!-- .bottom end -->
+    </section> <!-- .left -->
+
+    <section class="left">
+        <div class="top">
+            <div>
+                <h4>2020 카트라이더 리그 시즌1 카트 시네마틱</h4>
+                <p class="txt">편집, 특수효과</p>
+                <dl>
+                    <dt>프로그램</dt>
+                    <dd>After effects, Premiere pro, illustrator </dd>
+                </dl>
+                <dl>
+                    <dt>러닝타임</dt>
+                    <dd>1m 00s</dd>
+                </dl>
+                <dl>
+                    <dt>원본소스</dt>
+                    <dd>.</dd>
+                </dl>
+                <p class="info">제작 목적 및 콘셉트 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem assumenda animi, aut consequuntur nisi rem, minus deserunt similique esse officia quisquam ad. Nemo adipisci odit eaque a eius neque voluptate!</p>
+                <ul>
+                    <li><a href="#">영상보기</a></li>
+                    <li><a href="#">기획서보기</a></li>
+                </ul>
+            </div>
+            <figure>
+                <img src="images/bg01.jpg" alt="노트북 향수병" />
+            </figure>
+        </div> <!-- .top end -->
+        <div class="bottom">
+            <div>
+                <!-- 유튜브연결 -->
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/OYqhyOTO2_8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+
+        </div> <!-- .bottom end -->
+    </section> <!-- .left -->
+
+
+    <!-- 그래픽 디자인, 시각디자인 -->
+    <section class="g_design">
+        <h3>GRAPHIC DESIGN</h3>
+        <ul>
+            <li><a href="=#">카테고리</a></li>
+            <li><a href="=#">BI/CI디자인</a></li>
+            <li><a href="=#">시안제작</a></li>
+            <li><a href="=#">카테고리</a></li>
+        </ul>
+        <div>
+            <figure>
+                <img src="images/img02.jpg" alt="샐러드"/>
+            </figure> <!-- 1 -->
+            <figure>
+                <img src="images/img03.jpg" alt="샐러드"/>
+            </figure> <!-- 2 -->
+            <figure>
+                <img src="images/img04.jpg" alt="샐러드"/>
+            </figure> <!-- 3 -->
+            <figure>
+                <img src="images/img02.jpg" alt="샐러드"/>
+            </figure> <!-- 4 -->
+            <figure>
+                <img src="images/img03.jpg" alt="샐러드"/>
+            </figure> <!-- 5 -->
+            <figure>
+                <img src="images/img04.jpg" alt="샐러드"/>
+            </figure> <!-- 6 -->
+        </div>
+    </section> <!-- .g_design end -->
+    <footer>
+        <dl>
+            <dt>연락처</dt>
+            <dd><a href="tel:010-3937-2306">010.3937.2306</a>
+                <!-- <a href="tel:000-0000-0000"> 하면 전화 서비스가능 -->
+            </dd>
+        </dl>
+        <dl>
+            <dt>Kakaotalk ID</dt>
+            <dd>xpfks40</dd>
+        </dl>
+        <p class="down"> <a href="="#">이력서 다운</a></p>
+        <p class="copy">COPYRIGHT ⓒ 2022 디자이너 최은수.ALL RIGHTS RESERVERD.</p> 
+        <!-- 저작권내거임 적어논거 -->
+         <!-- COPYRIGHT나 ⓒ나 같은 의미 -->
+    </footer>
+</body>
+</html>
